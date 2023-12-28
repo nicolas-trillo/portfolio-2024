@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import Company from '../components/Company.astro';
+import gtImg from '../img/gtLogoColor.png';
+import tedImg from '../img/TEDx-Logo.efce37a3.png';
+---
+
+<Layout title="Nicolas Trillo">
+    <main>
+        <section id="introduction">
+            <h2>Hi, I'm Nicolas.</h2>
+            <p>I'm a (at the moment) freelance web developer based in Canada.</p>
+            <p>Though I'm currently studying programming at St. Lawrence College, I have over 2 years of experience building websites with different objectives.</p>
+            <p>My clients have included an architecture firm, and a TEDx event, of which I was the licencee and main organizer.</p>
+            <p class="centered-text monospace half-opacity">scroll ↓</p>
+        </section>
+        <section>
+            <h2>Clients</h2>
+            <div class="cards-container">
+                <Company name="GT Arquitectura" href='./client/GT/' color='ed652a' image={gtImg}/>
+                <Company name="TEDxYouth@Yanahuara" href='./client/TEDx/' color='000000' image={tedImg}/>
+            </div>
+        </section>
+        <section>
+            <h2>Technologies I work with</h2>
+            <div class="tech-container">
+                <div class="tech">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3>School and college–related projects</h3>
+        </section>
+        <!-- <section>
+            <h3>Other experiments</h3>
+        </section> -->
+        <section>
+            <h3>Non-related work experience</h3>
+            <div class="table-cont">
+                <table>
+                    <tr><td>Cornwall, ON</td><td>Front Crew at McDonald's</td><td>Current</td></tr>
+                    <tr><td>Cornwall, ON</td><td>Sales Associate at Homesense</td><td>September 2023 - November 2023</td></tr>
+                    <tr><td>Peru</td><td>Logistics Team member at Curso Taller Arrupe XII</td><td>June 2023 - August 2023</td></tr>
+                    <tr><td>Peru</td><td>Interin Regional board member at Esejoven Network</td><td>January 2023 - August 2023</td></tr>
+                    <tr><td>Peru</td><td>Confirmation Program Coordinator at Colegio San Jose Jesuitas</td><td>January 2023 - July 2023</td></tr>
+                    <tr><td>Peru</td><td>Licencee, Main Orgainzer at TEDxYouth@Yanahuara</td><td>August 2022 - July 2023</td></tr>
+                </table>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+    }
+    section {
+        margin: auto;
+        width: 100%;
+        max-width: 700px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        scroll-snap-align: center;
+    }
+    #introduction {
+        gap: 10px;
+    }
+    .cards-container {
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    @media (max-width: 700px) {
+        .cards-container {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    main {
+        padding: 20px;
+        color: var(--text-color);
+        font-size: 20px;
+        line-height: 1.6;
+    }
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    td, th {
+        border: 1px solid rgb(209, 209, 214);
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: rgb(209, 209, 214);
+    }
+    .table-cont {
+        overflow-x: scroll;
+        max-height: 70vh;
+    }
+</style>

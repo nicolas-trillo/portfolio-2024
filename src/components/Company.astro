@@ -1,0 +1,48 @@
+---
+interface Props {
+    name: string;
+    image: ImageMetadata;
+    color: string;
+    href: string;
+}
+
+const { href, name, image, color } = Astro.props;
+---
+
+<a href={href} class="company" style=`background-color: #${color}`>
+    <img src={image.src} alt="Logo of the architecture studio" />
+    <div class="company-text"><h4>{name} →</h4></div>
+</a>
+<style>
+    .company {
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+        padding: 10px;
+        position: relative;
+        border-radius: 5px;
+    }
+    .company img {
+        max-width: 100%;
+    }
+    .company-text {
+        border-radius: 5px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: var(--bg-color);
+        left: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease-out;
+    }
+    .company-text:hover {
+        opacity: 1;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    }
+</style>
