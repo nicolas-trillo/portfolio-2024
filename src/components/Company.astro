@@ -1,7 +1,7 @@
 ---
 interface Props {
     name: string;
-    image: ImageMetadata;
+    image: string;
     color: string;
     href: string;
 }
@@ -10,7 +10,7 @@ const { href, name, image, color } = Astro.props;
 ---
 
 <a href={href} class="company" style=`background-color: #${color}`>
-    <img src={image.src} alt="Logo of the architecture studio" />
+    <img src={image} alt="Logo of the architecture studio" />
     <div class="company-text"><h4>{name} →</h4></div>
 </a>
 <style>

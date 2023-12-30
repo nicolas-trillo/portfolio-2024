@@ -38,7 +38,7 @@ const clients = await  getCollection('projects', ({ data }) => {
             <h2>Clients</h2>
             <div class="cards-container">
                 {clients.map(client => (
-                    <Company name={client.data.title} href={`./proj/${client.slug}`} color={client.data.color} image={client.data.image}/>
+                    <Company name={client.data.title} href={`./proj/${client.slug}`} color={client.data.color} image={client.data.image.src}/>
                     ))}
                 </div>
             </section>
