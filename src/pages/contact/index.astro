@@ -1,0 +1,92 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+---
+
+<Layout title="Contact">
+    <main>
+        <section>
+            <div class="header">
+                <h1 style="line-height: 1;">Contact</h1>
+                <nav class="half-opacity monospace"><a href="../">← Home</a></nav>
+            </div>
+            <form
+            name="contact"
+            method="POST"
+            action="/success"
+            data-netlify-recaptcha="true"
+            data-netlify="true"
+            class="form"
+            >
+            <div class="fname">
+                <label for="fname">First name</label>
+                <input type="text" name="fname" placeholder="John" required />
+            </div>
+            <div class="lname">
+                <label for="lname">Last name</label>
+                <input type="text" name="lname" placeholder="Doe" required />
+            </div>
+            <div class="email">
+                <label for="email">Email</label>
+                <input
+                type="email"
+                name="email"
+                placeholder="john.doe@example.com"
+                required
+                />
+            </div>
+            <div class="message">
+                <label for="message">Message </label>
+                <textarea
+                name="message"
+                id="message"
+                rows="6"
+                placeholder="Lorem ipsum dolor sit amet."
+                style="resize: none"
+                spellcheck="true"
+                required
+                ></textarea>
+            </div>
+            <div class="captcha">
+                <div data-netlify-recaptcha="true"></div>
+            </div>
+            <div class="submit">
+                <button type="submit" class="nt-logo nt-logocttg nt-nav-button">
+                    Send
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
+</Layout>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    form > div {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        font-family: Menlo, 'IBM Plex Mono', monospace;
+        opacity: 0.5;
+    }
+    input, textarea {
+        font-size: 20px;
+        border: 2px solid var(--text-color);
+        padding: 5px;
+        border-radius: 5px;
+        line-height: 1;
+        font-family: sans-serif;
+    }
+    .captcha {
+        display: flex;
+        align-items: center;
+    }
+    .submit {
+        display: flex;
+        align-items: center;
+    }
+</style>

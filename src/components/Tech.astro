@@ -1,0 +1,26 @@
+---
+interface Props {
+    name: string;
+    image: ImageMetadata;
+    href: string;
+}
+
+const { href, name, image } = Astro.props;
+---
+
+<a href={href} class="tech" target="_blank">
+    <img src={image.src} alt={name}>
+</a>
+<style>
+    .tech {
+        width: 80px;
+        height: 80px;
+        transition: all 0.3s ease-out;
+    }
+    .tech img {
+        width: 100%;
+    }
+    .tech:hover {
+        transform: scale(1.2);
+    }
+</style>

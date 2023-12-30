@@ -1,110 +1,116 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import Company from '../components/Company.astro';
+import Tech from '../components/Tech.astro';
+
 import gtImg from '../img/gtLogoColor.png';
 import tedImg from '../img/TEDx-Logo.efce37a3.png';
+import astroImg from '../img/tech/astro.png';
+import cssImg from '../img/tech/css.png';
+import htmlImg from '../img/tech/html.png';
+import jsImg from '../img/tech/js.png';
+import netlifyImg from '../img/tech/netlify.png';
+import swiftImg from '../img/tech/swift.png';
+import tsImg from '../img/tech/ts.png';
+import flareImg from '../img/tech/flare.png';
+import ts from 'typescript';
+
+const clients = await  getCollection('projects', ({ data }) => {
+    return data.type === 'client';
+});;
 ---
 
 <Layout title="Nicolas Trillo">
     <main>
         <section id="introduction">
-            <h2>Hi, I'm Nicolas.</h2>
+            <div class="header">
+                <h1 style="line-height: 1;">Hi, I'm Nicolas.</h1>
+                <nav class="half-opacity monospace"><a href="./contact">contact →</a><a href="./contact">get a quote →</a></nav>
+            </div>
             <p>I'm a (at the moment) freelance web developer based in Canada.</p>
             <p>Though I'm currently studying programming at St. Lawrence College, I have over 2 years of experience building websites with different objectives.</p>
             <p>My clients have included an architecture firm, and a TEDx event, of which I was the licencee and main organizer.</p>
             <p class="centered-text monospace half-opacity">scroll ↓</p>
         </section>
-        <section>
+        <section id="clients">
             <h2>Clients</h2>
             <div class="cards-container">
-                <Company name="GT Arquitectura" href='./client/GT/' color='ed652a' image={gtImg}/>
-                <Company name="TEDxYouth@Yanahuara" href='./client/TEDx/' color='000000' image={tedImg}/>
-            </div>
-        </section>
-        <section>
-            <h2>Technologies I work with</h2>
-            <div class="tech-container">
-                <div class="tech">
-                    <img src="" alt="">
+                {clients.map(client => (
+                    <Company name={client.data.title} href={`./proj/${client.slug}`} color={client.data.color} image={client.data.image}/>
+                    ))}
                 </div>
-            </div>
-        </section>
-        <section>
-            <h3>School and college–related projects</h3>
-        </section>
-        <!-- <section>
-            <h3>Other experiments</h3>
-        </section> -->
-        <section>
-            <h3>Non-related work experience</h3>
-            <div class="table-cont">
-                <table>
-                    <tr><td>Cornwall, ON</td><td>Front Crew at McDonald's</td><td>Current</td></tr>
-                    <tr><td>Cornwall, ON</td><td>Sales Associate at Homesense</td><td>September 2023 - November 2023</td></tr>
-                    <tr><td>Peru</td><td>Logistics Team member at Curso Taller Arrupe XII</td><td>June 2023 - August 2023</td></tr>
-                    <tr><td>Peru</td><td>Interin Regional board member at Esejoven Network</td><td>January 2023 - August 2023</td></tr>
-                    <tr><td>Peru</td><td>Confirmation Program Coordinator at Colegio San Jose Jesuitas</td><td>January 2023 - July 2023</td></tr>
-                    <tr><td>Peru</td><td>Licencee, Main Orgainzer at TEDxYouth@Yanahuara</td><td>August 2022 - July 2023</td></tr>
-                </table>
-            </div>
-        </section>
-    </main>
-</Layout>
-
-<style>
-    main {
-        height: 100vh;
-        overflow-y: scroll;
-        scroll-snap-type: y mandatory;
-    }
-    section {
-        margin: auto;
-        width: 100%;
-        max-width: 700px;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        scroll-snap-align: center;
-    }
-    #introduction {
-        gap: 10px;
-    }
-    .cards-container {
-        max-width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    @media (max-width: 700px) {
-        .cards-container {
-            grid-template-columns: repeat(1, 1fr);
+            </section>
+            <section id="tech">
+                <h2>Technologies I work with:</h2>
+                <div class="tech-container">
+                    <Tech name="Netlify" href='https://www.netlify.com' image={netlifyImg}/>
+                    <Tech name="Cloudflare" href='https://www.cloudflare.com/en-ca/' image={flareImg}/>
+                    <Tech name="Astro" href='https://astro.build/' image={astroImg}/>
+                    <Tech name="TypeScript" href='https://www.typescriptlang.org' image={tsImg}/>
+                    <Tech name="JavaScript" href='https://developer.mozilla.org/en-US/docs/Web/JavaScript' image={jsImg}/>
+                    <Tech name="Swift" href='https://www.swift.org' image={swiftImg}/>
+                    <Tech name="HTML" href='https://developer.mozilla.org/en-US/docs/Web/HTML' image={htmlImg}/>
+                    <Tech name="CSS" href='https://developer.mozilla.org/en-US/docs/Web/CSS' image={cssImg}/>
+                </div>
+            </section>
+            <section id="other">
+                <h3>School and college–related projects</h3>
+            </section>
+            <section id="resume">
+                <h3>Non-related work experience</h3>
+                <div class="table-cont">
+                    <table>
+                        <tr><td>Cornwall, ON</td><td>Front Crew at McDonald's</td><td>Current</td></tr>
+                        <tr><td>Cornwall, ON</td><td>Sales Associate at Homesense</td><td>September 2023 - November 2023</td></tr>
+                        <tr><td>Peru</td><td>Logistics Team member at Curso Taller Arrupe XII</td><td>June 2023 - August 2023</td></tr>
+                        <tr><td>Peru</td><td>Interin Regional board member at Esejoven Network</td><td>January 2023 - August 2023</td></tr>
+                        <tr><td>Peru</td><td>Confirmation Program Coordinator at Colegio San Jose Jesuitas</td><td>January 2023 - July 2023</td></tr>
+                        <tr><td>Peru</td><td>Licencee, Main Orgainzer at TEDxYouth@Yanahuara</td><td>August 2022 - July 2023</td></tr>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </Layout>
+    
+    <style>
+        #introduction {
+            gap: 10px;
         }
-    }
-    main {
-        padding: 20px;
-        color: var(--text-color);
-        font-size: 20px;
-        line-height: 1.6;
-    }
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
+        .cards-container {
+            max-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .tech-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: left;
+        }
+        @media (max-width: 700px) {
+            .cards-container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid rgb(209, 209, 214);
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(209, 209, 214);
+        }
+        .table-cont {
+            overflow-x: scroll;
+            max-height: 70vh;
+        }
+    </style>
     
-    td, th {
-        border: 1px solid rgb(209, 209, 214);
-        text-align: left;
-        padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-        background-color: rgb(209, 209, 214);
-    }
-    .table-cont {
-        overflow-x: scroll;
-        max-height: 70vh;
-    }
-</style>
