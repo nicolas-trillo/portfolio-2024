@@ -61,6 +61,7 @@ const { title } = Astro.props;
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
         padding: 20px;
+        padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
         color: var(--text-color);
         font-size: 20px;
         line-height: 1.6;
