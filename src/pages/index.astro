@@ -20,6 +20,9 @@ import ts from 'typescript';
 const clients = await  getCollection('projects', ({ data }) => {
     return data.type === 'client';
 });;
+const schoolStuff = await  getCollection('projects', ({ data }) => {
+    return data.type === 'project';
+});;
 ---
 
 <Layout title="Nicolas Trillo">
@@ -38,7 +41,7 @@ const clients = await  getCollection('projects', ({ data }) => {
             <h2>Clients</h2>
             <div class="cards-container">
                 {clients.map(client => (
-                    <Company name={client.data.title} href={`./proj/${client.slug}`} color={client.data.color} image={client.data.image.src}/>
+                    <Company name={client.data.title} href={`./${client.slug}`} color={client.data.color} image={client.data.image.src}/>
                     ))}
                 </div>
             </section>
@@ -57,6 +60,13 @@ const clients = await  getCollection('projects', ({ data }) => {
             </section>
             <section id="other">
                 <h3>School and college–related projects</h3>
+                <div class="table-cont">
+                    <table>
+                        {schoolStuff.map(project => (
+                            <tr><td>{project.data.year}</td><td><a class="color-txt" href={project.slug}>{project.data.title}</a></td></tr>
+                        ))}
+                    </table>
+                </div>
             </section>
             <section id="resume">
                 <h3>Non-related work experience</h3>

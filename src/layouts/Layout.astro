@@ -1,4 +1,5 @@
 ---
+import favicon from '/favicon.ico'
 interface Props {
     title: string;
 }
@@ -15,6 +16,8 @@ const { title } = Astro.props;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="shortcut icon" href={favicon} type="image/x-icon">
+    <!-- <script src="https://files.ntrillo.com/fokus.js"></script> -->
     <title>{title} · NT</title>
 </head>
 <body>
@@ -102,6 +105,8 @@ const { title } = Astro.props;
         background-color: var(--text-color);
         font-size: 20px;
         border-radius: 200px;
+        transition: all 0.2s ease-out;
+        cursor: pointer;
     }
     a.btn {
         text-decoration: none;
@@ -109,6 +114,10 @@ const { title } = Astro.props;
     button:active, .btn:active {
         background-color: var(--bg-color);
         color: var(--text-color);
+        transform: scale(0.9);
+    }
+    button:hover, .btn:hover {
+        border-color: rgb(199, 199, 204);
     }
     .material-symbols-outlined {
         font-variation-settings:
@@ -125,5 +134,8 @@ const { title } = Astro.props;
     }
     .half-opacity {
         opacity: 0.5;
+    }
+    .color-txt {
+        color: var(--text-color);
     }
 </style>

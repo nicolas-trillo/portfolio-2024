@@ -4,10 +4,12 @@ const projects = defineCollection({
     schema: ({ image }) =>
         z.object({
             title: z.string(),
-            image: image().optional(),
+            image: image(),
             link: z.string(),
             type: z.enum(["client", "project"]),
-            color: z.string().optional(),
+            color: z.string(),
+            showImage: z.boolean(),
+            year: z.number().optional(),
         }),
 });
 
