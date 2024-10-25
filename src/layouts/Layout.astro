@@ -1,5 +1,5 @@
 ---
-import favicon from '/favicon.ico'
+import favicon from "/favicon.ico";
 interface Props {
     title: string;
 }
@@ -9,60 +9,74 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Web developer based in Ontario 🇨🇦" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="shortcut icon" href={favicon} type="image/x-icon">
-    <!-- <script src="https://files.ntrillo.com/fokus.js"></script> -->
-    <title>{title} · NT</title>
-</head>
-<body>
-    <slot />
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Web developer based in Ontario 🇨🇦" />
+        <meta name="viewport" content="width=device-width" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="shortcut icon" href={favicon} type="image/x-icon" />
+        <!-- <script src="https://files.ntrillo.com/fokus.js"></script> -->
+        <title>{title} · NT</title>
+    </head>
+    <body>
+        <slot />
+    </body>
 </html>
 <style is:global>
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,400;0,500;0,700;1,100;1,400;1,500;1,700&family=Inter:wght@100;400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
     :root {
         --bg-color: rgb(242, 242, 247);
         --text-color: rgb(28, 28, 30);
         --accent-gradient: linear-gradient(
-        45deg,
-        rgb(var(--accent)),
-        rgb(var(--accent-light)) 30%,
-        white 60%
+            45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%
         );
     }
-    /*
-    font-family: 'IBM Plex Mono', monospace;
-    font-family: 'Inter', sans-serif;
-    */
     * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
     html {
-        font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+        font-family: "Public Sans", sans-serif;
         background: var(--bg-color);
     }
-    h1,h2,h3,h4,h5,h6 {
-        font-family: 'IBM Plex Mono', monospace;
-    }
-    h4,h5,h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    code {
+        font-family: "IBM Plex Sans Condensed", monospace;
         font-weight: 400;
+    }
+    h4,
+    h5,
+    h6 {
+        font-weight: 400;
+    }
+    .small {
+        font-size: small;
     }
     main {
         height: 100dvh;
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
-        padding: 0px 20px;
+        padding: 0px 0px;
         color: var(--text-color);
         font-size: 20px;
-        line-height: 1.6;
+        line-height: 1.5;
     }
     nav {
         display: flex;
@@ -82,55 +96,47 @@ const { title } = Astro.props;
         flex-direction: column;
         justify-content: center;
         scroll-snap-align: center;
+    } section > * {
+        padding: 0 20px;
+
     }
-    code {
-        font-family:
-        Menlo,
-        Monaco,
-        Lucida Console,
-        Liberation Mono,
-        DejaVu Sans Mono,
-        Bitstream Vera Sans Mono,
-        Courier New,
-        monospace;
-    }
-    button, .btn {
-        padding: 5px 30px;
-        text-overflow: ellipsis;
-        text-wrap: nowrap;
-        min-width: 100px;
-        width: fit-content;
-        border: 2px solid var(--text-color);
-        color: var(--bg-color);
-        background-color: var(--text-color);
-        font-size: 20px;
-        border-radius: 200px;
-        transition: all 0.2s ease-out;
+    button,
+    .btn {
+        font-family: "IBM Plex Sans Condensed", monospace;
         cursor: pointer;
+        border: 1px solid #007aff;
+        text-align: left;
+        padding: 5px 60px 5px 12px;
+        line-height: 1;
+        font-weight: 400;
+        width: fit-content;
+        background-color: #007aff;
+        color: var(--bg-color);
+        transition: all 0.2s cubic-bezier(0,0,.38,.9);
     }
     a.btn {
         text-decoration: none;
     }
-    button:active, .btn:active {
+    button:hover,
+    .btn:hover {
+        color: #007aff;
         background-color: var(--bg-color);
-        color: var(--text-color);
-        transform: scale(0.9);
     }
-    button:hover, .btn:hover {
-        border-color: rgb(199, 199, 204);
+    a {
+        color: #007aff;
     }
     .material-symbols-outlined {
         font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" 0,
+            "opsz" 24;
     }
     .centered-text {
         text-align: center;
     }
     .monospace {
-        font-family: Menlo, 'IBM Plex Mono', monospace;
+        font-family: "IBM Plex Sans Condensed", monospace;
     }
     .half-opacity {
         opacity: 0.5;

@@ -1,127 +1,145 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import Company from '../components/Company.astro';
-import Tech from '../components/Tech.astro';
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Company from "../components/Company.astro";
 
-import gtImg from '../img/gtLogoColor.png';
-import tedImg from '../img/TEDx-Logo.efce37a3.png';
-import astroImg from '../img/tech/astro.png';
-import cssImg from '../img/tech/css.png';
-import htmlImg from '../img/tech/html.png';
-import jsImg from '../img/tech/js.png';
-import netlifyImg from '../img/tech/netlify.png';
-import swiftImg from '../img/tech/swift.png';
-import tsImg from '../img/tech/ts.png';
-import flareImg from '../img/tech/flare.png';
-import ts from 'typescript';
-
-const clients = await  getCollection('projects', ({ data }) => {
-    return data.type === 'client';
-});;
-const schoolStuff = await  getCollection('projects', ({ data }) => {
-    return data.type === 'project';
-});;
+const clients = await getCollection("projects", ({ data }) => {
+    return data.type === "client";
+});
 ---
 
 <Layout title="Nicolas Trillo">
     <main>
         <section id="introduction">
-            <div class="header">
-                <h1 style="line-height: 1;">Hi, I'm Nicolas.</h1>
-                <nav class="half-opacity monospace"><a href="./contact">contact →</a><a href="./contact">get a quote →</a></nav>
+            <div class="in-grid">
+                <p id="name">Nicolas Trillo G</p>
+                <a id="ibm" target="_blank" href="https://coursera.org/verify/professional-cert/J98NKIC7LRJ1"><code>IBM</code> Mainframe Developer</a>
+                <p id="soft">Software Developer</p>
+                <p id="fullstack">Full stack web Developer</p>
+                <p id="position">SI Leader @ SLC</p>
+                <p id="linkedin" class="half-opacity">
+                    Reach me: 
+                    <a target="_blank" href="https://www.linkedin.com/in/nicolas-trillo/">LinkedIn</a>, 
+                    <a href="mailto:nicolas@ntrillo.com">email</a>
+                </p>
+                <p id="location" class="half-opacity">Ontario, Canada</p>
             </div>
-            <p>I'm a programming student based in Canada.</p>
-            <p>Despite currently pursuing my first degree, I have over 2 years of experience building websites with different objectives.</p>
-            <p>My clients have included an architecture firm and a TEDx event, of which I was the licencee and main organizer.</p>
-            <p>I'm actively seeking internship opportunities.</p>
-            <p class="centered-text monospace half-opacity">scroll ↓</p>
         </section>
         <section id="clients">
-            <h2>Clients</h2>
+            <div id="tech">
+                <p>I work with:</p>
+                <code>COBOL, JCL, CICS, z/OS, Agile, C++, C#.NET, SQL, mongoDB, Java, Swift, PHP, Linux (Red Hat), Bash, Node.JS, Express.JS, Astro, React.</code>
+            </div>
+            <div class="mob-br">
+                <br>
+            </div>
+            <p>Past projects</p>
             <div class="cards-container">
-                {clients.map(client => (
-                    <Company name={client.data.title} href={`./${client.slug}`} color={client.data.color} image={client.data.image.src}/>
-                    ))}
-                </div>
-            </section>
-            <section id="tech">
-                <h2>Technologies I work with:</h2>
-                <div class="tech-container">
-                    <Tech name="Netlify" href='https://www.netlify.com' image={netlifyImg}/>
-                    <Tech name="Cloudflare" href='https://www.cloudflare.com/en-ca/' image={flareImg}/>
-                    <Tech name="Astro" href='https://astro.build/' image={astroImg}/>
-                    <Tech name="TypeScript" href='https://www.typescriptlang.org' image={tsImg}/>
-                    <Tech name="JavaScript" href='https://developer.mozilla.org/en-US/docs/Web/JavaScript' image={jsImg}/>
-                    <Tech name="Swift" href='https://www.swift.org' image={swiftImg}/>
-                    <Tech name="HTML" href='https://developer.mozilla.org/en-US/docs/Web/HTML' image={htmlImg}/>
-                    <Tech name="CSS" href='https://developer.mozilla.org/en-US/docs/Web/CSS' image={cssImg}/>
-                </div>
-            </section>
-            <section id="other">
-                <h3>School and college–related projects</h3>
-                <div class="table-cont">
-                    <table>
-                        {schoolStuff.map(project => (
-                            <tr><td>{project.data.year}</td><td><a class="color-txt" href={project.slug}>{project.data.title}</a></td></tr>
-                        ))}
-                    </table>
-                </div>
-            </section>
-            <section id="resume">
-                <h3>Non-related work experience</h3>
-                <div class="table-cont">
-                    <table>
-                        <tr><td>Cornwall, ON</td><td>Front Crew at McDonald's</td><td>Current</td></tr>
-                        <tr><td>Cornwall, ON</td><td>Sales Associate at Homesense</td><td>September 2023 - November 2023</td></tr>
-                        <tr><td>Peru</td><td>Logistics Team member at Curso Taller Arrupe XII</td><td>June 2023 - August 2023</td></tr>
-                        <tr><td>Peru</td><td>Regional board member at Esejoven Network</td><td>January 2023 - August 2023</td></tr>
-                        <tr><td>Peru</td><td>Confirmation Program Coordinator at Colegio San Jose Jesuitas</td><td>January 2023 - July 2023</td></tr>
-                        <tr><td>Peru</td><td>Licencee, Main Orgainzer at TEDxYouth@Yanahuara</td><td>August 2022 - July 2023</td></tr>
-                    </table>
-                </div>
-            </section>
-        </main>
-    </Layout>
-    
-    <style>
-        #introduction {
-            gap: 10px;
+                {
+                    clients.map((client) => (
+                    <Company
+                    name={client.data.title}
+                    href={`./${client.slug}`}
+                    color={client.data.color}
+                    image={client.data.image.src}
+                    />
+                    ))
+                }
+            </div>
+            <p id="copy" class="half-opacity small"><br/> &copy; {new Date().getFullYear()} Nicolas Trillo Gutierrez</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    #introduction {
+        background-color: #007aff;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    .in-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: fit-content fit-content fit-content;
+        gap: 20px 0px;
+    }
+    @media (min-width: 711px) {
+        #name {
+            grid-column-start: 1;
+            grid-column-end: 5;
         }
+        #ibm {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        #soft {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        #fullstack {
+            grid-column: 3;
+            grid-row: 2;
+        }
+        #position {
+            grid-column: 4;
+            grid-row: 2;
+        }
+        #linkedin {
+            grid-column: 1;
+            grid-row: 3;
+        }
+        #location {
+            grid-column: 4;
+            grid-row: 3;
+        }
+    }
+    #copy {
+        text-align: right;
+    }
+    #introduction > * {
+        max-width: 700px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    #introduction * {
+        color: var(--bg-color);
+    }
+    .cards-container {
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    @media (max-width: 700px) {
         .cards-container {
-            max-width: 100%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    #tech {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    @media (max-width: 710px) {
+        #name {
+            font-weight: 700;
+        }
+        .in-grid {
+            grid-template-columns: repeat(1, 1fr);
             gap: 10px;
         }
-        .tech-container {
+    }
+    .mob-br {
+        display: none;
+    }
+    @media (max-width: 340px) {
+        #tech {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .mob-br {
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: left;
         }
-        @media (max-width: 700px) {
-            .cards-container {
-                grid-template-columns: repeat(1, 1fr);
-            }
-        }
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-        td, th {
-            border: 1px solid rgb(209, 209, 214);
-            text-align: left;
-            padding: 8px;
-        }
-        tr:nth-child(even) {
-            background-color: rgb(209, 209, 214);
-        }
-        .table-cont {
-            overflow-x: scroll;
-            max-height: 70vh;
-        }
-    </style>
-    
+    }
+</style>
