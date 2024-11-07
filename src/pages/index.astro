@@ -65,6 +65,13 @@ const clients = await getCollection("projects", ({ data }) => {
         grid-template-rows: fit-content fit-content fit-content;
         gap: 20px 0px;
     }
+    .in-grid > * {
+        padding: 5px;
+        transition: 0.05s ease-in-out;
+    }
+    .in-grid > *:hover, .in-grid > *:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
     @media (min-width: 711px) {
         #name {
             grid-column-start: 1;
