@@ -22,8 +22,9 @@ const clients = await getCollection("projects", ({ data }) => {
                     <a target="_blank" href="https://www.linkedin.com/in/nicolas-trillo/">LinkedIn</a>, 
                     <a href="mailto:nicolas@ntrillo.com">email</a>
                 </p>
-                <p id="location" class="half-opacity">Ontario, Canada</p>
+                <p id="location" class="half-opacity">Arequipa, Peru</p>
             </div>
+            <p class="scroll-txt half-opacity">Scroll ↓</p>
         </section>
         <section id="clients">
             <div id="tech">
@@ -58,6 +59,12 @@ const clients = await getCollection("projects", ({ data }) => {
         margin: 0;
         width: 100%;
         max-width: 100%;
+        position: relative;
+    }
+    .scroll-txt {
+        position: absolute;
+        bottom: 10px;
+        left: 5px;
     }
     .in-grid {
         display: grid;
